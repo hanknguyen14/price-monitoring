@@ -48,6 +48,7 @@ const checkPrices = async (url, expectedPrice) => {
         console.log('No hope this time', name, price);
     }
 }
+export default checkPrices;
 
 // Run the checkPrices function every INTERVAL_TIME_DURATION
 checkPrices(PRODUCTS_URL, EXPECTED_PRICE);
