@@ -1,0 +1,25 @@
+{
+  "name": "price-monitoring",
+  "version": "1.0.0",
+  "description": "Price monitoring",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanknguyen14/price-monitoring.git"
+  },
+  "author": "Hung M. Nguyen (aka Hank Nguyen)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanknguyen14/price-monitoring/issues"
+  },
+  "homepage": "https://github.com/hanknguyen14/price-monitoring#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.2.2"
+  }
+}
