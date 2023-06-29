@@ -29,7 +29,7 @@ Copy env example
   cp .env.example .env
 ```
 
-Update env according to your parameters 
+Update env according to your parameters
 
 ```bash
   PRODUCTS_URL = '/product-url'
@@ -39,11 +39,13 @@ Update env according to your parameters
   NAME_SELECTOR = '.name-product h1'
   # Channel id from https://notify.run/
   NOTIFICATION_CHANNEL_ID='notification_channel_id'
-  # Time in miliseconds
-  INTERVAL_TIME_DURATION=12345
+  # Cron expression from https://crontab.guru/
+  CRON_EXPRESSION='0 1 * * *'
+  TIME_ZONE=America/Los_Angeles
 ```
 
 Run start application
+
 ```bash
   npm start
 ```
@@ -57,4 +59,3 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 ## Feedback
 
 If you have any feedback, please reach out to us at hungnguyen.dhg@gmail.com
-
