@@ -28,14 +28,14 @@ const getHTML = async (url) => {
 
 const sendPush = async (name, price) => {
     const dataMessage = `Price went down: ${name} went below ${price}`;
-    const header = {
+    const options = {
         method: 'POST',
-        body: dataMessage,
         headers: {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
-        }
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: dataMessage
     }
-    return fetch(`https://notify.run/${NOTIFICATION_CHANNEL_ID}`, header);
+    return fetch(`https://notify.run/${NOTIFICATION_CHANNEL_ID}`, options);
 }
 
 const checkPrices = async (url, expectedPrice) => {
