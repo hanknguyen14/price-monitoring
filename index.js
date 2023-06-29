@@ -1,6 +1,7 @@
 import { load } from 'cheerio';
 import fetch from 'node-fetch';
 import 'dotenv/config';
+import cron from 'node-cron';
 
 const PRODUCTS_URL = process.env.PRODUCTS_URL;
 const EXPECTED_PRICE = process.env.EXPECTED_PRICE;
@@ -8,7 +9,8 @@ const REGEX_PRICE = new RegExp(process.env.REGEX_PRICE, 'g');
 const PRICE_SELECTOR = process.env.PRICE_SELECTOR;
 const NAME_SELECTOR = process.env.NAME_SELECTOR;
 const NOTIFICATION_CHANNEL_ID = process.env.NOTIFICATION_CHANNEL_ID;
-const INTERVAL_TIME_DURATION = process.env.INTERVAL_TIME_DURATION;
+const CRON_EXPRESSION = process.env.CRON_EXPRESSION;
+const TIME_ZONE = process.env.TIME_ZONE;
 
 const convertPrice = (amount) => parseInt(Number(amount.replace(REGEX_PRICE, "")));
 
@@ -50,6 +52,10 @@ const checkPrices = async (url, expectedPrice) => {
 }
 export default checkPrices;
 
-// Run the checkPrices function every INTERVAL_TIME_DURATION
-checkPrices(PRODUCTS_URL, EXPECTED_PRICE);
-setInterval(checkPrices, INTERVAL_TIME_DURATION, PRODUCTS_URL, EXPECTED_PRICE);
+// Run the checkPrices function every CRON_EXPRESSION
+cron.schedule(CRON_EXPRESSION, () => {
+    checkPrices(PRODUCTS_URL, EXPECTED_PRICE);
+}, {
+    scheduled: true,
+    timezone: TIME_ZONE
+});
